@@ -9,7 +9,7 @@ export class UserController {
     }
 
     // Creating New Account for user
-    async register(req: Request, res: Response) {
+    async register(req: Request, res: Response): Promise<any> {
         try {
             const { email, password, firstName, lastName } = req.body;
 
@@ -25,7 +25,7 @@ export class UserController {
             const user = await this.userService.createUser(req.body);
             
             // 201 means "Created" so user was created successfully (request was successful)
-            res.status(201).json({
+            return res.status(201).json({
                 success: true,
                 message: 'User registered successfully',
                 data: {
@@ -38,7 +38,7 @@ export class UserController {
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'Unknown error';
             // 400 means bad request and sends a json response back to client
-            res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 message: 'Registration failed',
                 error: errorMessage
@@ -47,7 +47,7 @@ export class UserController {
     }
 
     // User Logging in
-    async login(req: Request, res: Response){
+    async login(req: Request, res: Response): Promise<any> {
         try {
             const {email, password} = req.body;
 
@@ -59,7 +59,7 @@ export class UserController {
                 });
             }
             const {user, token} = await this.userService.loginUser(email, password);
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 message: 'Login Successful',
                 data: {
@@ -73,7 +73,7 @@ export class UserController {
                 }
             });
         } catch (error: any) {
-            res.status(401).json({
+            return res.status(401).json({
                 success: false,
                 message: 'Login failed',
                 error: error.message

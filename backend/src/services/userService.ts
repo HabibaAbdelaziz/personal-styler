@@ -46,7 +46,7 @@ export class UserService {
             // use JWT tokens (json web token) to securely transmit info as a json object
             const token = jwt.sign(
                 {userId: user._id},
-                process.constrainedMemory.JWT_SECRET || 'your-secret-key',
+                process.env.JWT_SECRET || 'your-secret-key',
                 {expiresIn: '24h'}
             );
 
