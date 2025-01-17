@@ -11,6 +11,7 @@ export class UserController {
     // Creating New Account for user
     async register(req: Request, res: Response): Promise<any> {
         try {
+            console.log('Register request received:', req.body); 
             const { email, password, firstName, lastName } = req.body;
 
             // Validat einput
@@ -79,6 +80,23 @@ export class UserController {
                 error: error.message
             });
 
+        }
+    }
+
+    async getProfile(req: Request, res: Response): Promise<any> {
+        try{
+            return res.status(200).json({
+                success: true,
+                data: {
+                    user: req.user
+                }
+            });
+        } catch (error) {
+            return res.status(400).json({
+                    success: false,
+                    message: 'Error fetching profile',
+                    error: error instanceof Error ? error.message: 'Unknown error'
+                });
         }
     }
 }
