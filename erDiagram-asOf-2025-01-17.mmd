@@ -1,0 +1,65 @@
+erDiagram
+    User ||--o{ StylePreference : has
+    User ||--o{ WardrobeItem : owns
+    User ||--o{ Outfit : creates
+    StylePreference ||--|{ BodyMeasurement : includes
+    WardrobeItem }|--o{ Outfit : partOf
+
+
+    User {
+        string id PK
+        string email
+        string password
+        string firstName
+        string lastName
+        date createdAt
+        date updatedAt
+    }
+    
+    StylePreference {
+        string id PK
+        string userId FK
+        string bodyShape
+        string[] colorPreferences
+        string[] styleTypes
+        string[] occasionPreferences
+        date updatedAt
+    }
+
+    BodyMeasurement {
+        string id PK
+        string stylePreferenceId FK
+        number age
+        number height
+        number weight
+        number bust
+        number waist
+        number hips
+        date measuredAt
+    }
+
+
+    WardrobeItem {
+        string id PK
+        string userId FK
+        string category
+        string subCategory
+        string color
+        string[] seasons
+        string brand
+        string manufactureYear
+        string imageUrl
+        date addedAt
+
+    }
+
+    Outfit {
+        string id PK
+        string userId FK
+        string name
+        string[] itemIds
+        string occasion
+        string season
+        boolean favorite
+        date createdAt
+    }
