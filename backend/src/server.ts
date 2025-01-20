@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/databases';
 import userRoutes from './routes/userRoutes';
 import cors from 'cors';
+import stylePreferenceRoutes from './routes/stylePreferenceRoutes';
 
 // Load environment variables from .env file
 // dotenv -> helps us manage env vars (like secret keys)
@@ -25,6 +26,7 @@ app.use(express.json());
 
 // ===Routes===
 app.use('/api/users', userRoutes);
+app.use('/api/style-preferences', stylePreferenceRoutes);
 
 // // Sample test route
 // app.get('/test', (req: Request, res: Response) => {
