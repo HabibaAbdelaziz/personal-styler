@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import MeasurementForm from './components/MeasurementForm';
+import MeasurementHistory from './components/MeasurementHistory';
+import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+const App = () => (
+    <BrowserRouter>
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/measurements" element={
+              <PrivateRoute>
+                <MeasurementForm />
+              </PrivateRoute>
+            } />
+            <Route path="/measurements/history" element={
+              <PrivateRoute>
+                <MeasurementHistory />
+              </PrivateRoute>
+            } />
+            <Route path="/" element={<Navigate to="/measurements" />} />
+        </Routes>
+    </BrowserRouter>
+)

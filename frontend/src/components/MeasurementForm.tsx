@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {use, useState} from 'react';
+import { setTextRange } from 'typescript';
 
 interface MeasurementFormData{
     height: number;
@@ -8,6 +9,11 @@ interface MeasurementFormData{
     hips: number;
     age: number;
 }
+
+interface ValidationErrors {
+    [key: string]: string;
+}
+
 
 const MeasurementForm: React.FC = () =>{
     const [measurements, setMeasurements] = useState<MeasurementFormData>({
@@ -19,6 +25,33 @@ const MeasurementForm: React.FC = () =>{
         age: 0
     })
     
+    const [errors, setErrors] = useState<ValidationErrors>({});
+
+    const ranges: { [key: string]: [number, number]} ={
+        height: [130, 230],
+        weight: [30, 200],
+        age: [13, 130],
+        bust: [50, 200],
+        waist: [40, 200],
+        hips: [50, 200],
+    };
+
+    const validateForm = (): boolean => {
+        const newErrors: ValidationErrors = {};
+
+        (Object.keys(ranges) as (keyof MeasurementFormData)[]).forEach((field) => {
+            const [min, max] = ranges[field];
+            if (measurements[field] < min || measurements[field] > max) {
+                newErrors[field] = `${field} must be between ${min} and ${max}`;
+            }
+        });
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
         setMeasurements(prev => ({
@@ -29,6 +62,7 @@ const MeasurementForm: React.FC = () =>{
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!validateForm()) return;
         try {
             const response = await fetch('http://localhost:3001/api/measurements', {
                 method: 'POST',
@@ -50,6 +84,10 @@ const MeasurementForm: React.FC = () =>{
         }
     };
 
+    const renderError = (field: string) => errors[field] && (
+        <span className="text-red-500 text-sm mt-1">{errors[field]}</span>
+    );
+
 
     return (
         <div className="max-x-md mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -68,6 +106,7 @@ const MeasurementForm: React.FC = () =>{
                             required
                         />
                     </label>
+                    {renderError('height')}
                 </div>
                 <div>
                     <label className="block mb-2">Weight (kg):
@@ -82,6 +121,7 @@ const MeasurementForm: React.FC = () =>{
                             required
                         />
                     </label>
+                    {renderError('weight')}
                 </div>
                 <div>
                     <label className="block mb-2">Age (years):
@@ -96,6 +136,7 @@ const MeasurementForm: React.FC = () =>{
                                 required
                             />
                     </label>
+                    {renderError('age')}
                 </div>
                 <div>
                     <label className="block mb-2">Bust (cm):
@@ -110,6 +151,7 @@ const MeasurementForm: React.FC = () =>{
                                 required
                             />
                     </label>
+                    {renderError('bust')}
                 </div>
                 <div>
                     <label className="block mb-2">Waist (cm):
@@ -124,6 +166,7 @@ const MeasurementForm: React.FC = () =>{
                                 required
                             />
                     </label>
+                    {renderError('waist')}
                 </div>
                 <div>
                     <label className="block mb-2">Hips (cm):
@@ -138,6 +181,7 @@ const MeasurementForm: React.FC = () =>{
                                 required
                             />
                     </label>
+                    {renderError('hips')}
                 </div>
                 <button
                     type="submit"
