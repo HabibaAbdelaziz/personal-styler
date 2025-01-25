@@ -54,9 +54,19 @@ const MeasurementForm: React.FC = () =>{
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
+        const numValue = parseFloat(value);
+
+        //clearing prev erorr
+        setErrors(prev => ({...prev, [name]: ''}))
+
+        //validate new val
+        if (name == 'height' && (numValue <130 || numValue >230)){
+            setErrors(prev => ({...prev, height: 'Height must be between 130 and 230 cm'}))
+        }
+
         setMeasurements(prev => ({
             ...prev,
-            [name]: parseFloat(value)
+            [name]: numValue
         }));
     };
 
@@ -106,7 +116,7 @@ const MeasurementForm: React.FC = () =>{
                             required
                         />
                     </label>
-                    {renderError('height')}
+                    {errors.height && <span data-testid="height-error" className="text-red-500 text-sm">{errors.height}</span>}
                 </div>
                 <div>
                     <label className="block mb-2">Weight (kg):
