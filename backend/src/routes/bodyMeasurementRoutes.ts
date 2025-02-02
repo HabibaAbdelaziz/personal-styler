@@ -11,20 +11,20 @@ router.post(
     '/',
     auth,
     validateMeasurements,
-    bodyMeasurementController.addMeasurement.bind(bodyMeasurementController)
+    (req, res) => bodyMeasurementController.addMeasurement(req, res)
 );
 
-router.get(
-    '/history/:stylePreferenceId',
-    auth,
-    bodyMeasurementController.getMeasurementHistory.bind(bodyMeasurementController)
-);
+// router.get(
+//     '/history/:stylePreferenceId',
+//     auth,
+//     bodyMeasurementController.getMeasurementHistory.bind(bodyMeasurementController)
+// );
 
-router.get(
-    '/latest/:stylePreferenceId',
-    auth,
-    bodyMeasurementController.getLatestMeasurement.bind(bodyMeasurementController)
-);
+// router.get(
+//     '/latest/:stylePreferenceId',
+//     auth,
+//     bodyMeasurementController.getLatestMeasurement.bind(bodyMeasurementController)
+// );
 
 export default router;
 
