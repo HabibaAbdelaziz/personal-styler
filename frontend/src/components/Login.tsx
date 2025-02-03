@@ -10,7 +10,7 @@ const Login: React.FC = () => {
     
     const [error, setError] = useState('');
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
         console.log("Submitting form with: ", credentials);
@@ -30,7 +30,8 @@ const Login: React.FC = () => {
             if(response.ok){
                 console.log("Login successful! Redirecting....")
                 localStorage.setItem('token', data.data.token);
-                navigate('/measurements');
+                localStorage.setItem('stylePreferenceId', data.data.stylePreferenceId)
+                navigate('/HeightForm'); //redirect to HeightForm after successful Login
             } else {
                 console.error("Error:", data.message);
                 setError(data.message || 'Invalid email or password')
@@ -45,7 +46,7 @@ const Login: React.FC = () => {
         <div className='max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md'>
            <h2 className="text-2xl font-bold mb-6">Login</h2>
            {error && <div className="text-red-500 mb-4">{error}</div>}
-           <form onSubmit={handleSubmit} className="space-y-4">
+           <form onSubmit={handleLogin} className="space-y-4">
                 <div>
                     <label className="block mb-2">Email:
                         <input

@@ -4,8 +4,5 @@ export interface IUser {
     password: string;
     firstName: string;
     lastName: string;
-    stylePreferences?: {
-        colors: string[];
-        styles: string[];
-    };
+    stylePreferenceId?: string | null;
 }

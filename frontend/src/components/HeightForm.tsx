@@ -40,8 +40,8 @@ const HeightForm: React.FC = () => {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    stylePreferenceId,
-                    height
+                    stylePreferenceId: stylePreferenceId,
+                    height: height
                 })
             });
 
