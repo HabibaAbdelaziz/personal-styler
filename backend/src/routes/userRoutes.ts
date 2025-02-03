@@ -7,9 +7,9 @@ const userController = new UserController();
 
 //==Public routes==
 // route for user registration
-router.post('/register', (req, res) => userController.register(req, res));
+router.post('/register', userController.register.bind(userController));
 // route for user login
-router.post('/login', (req, res) => userController.login(req, res));
+router.post('/login', userController.login.bind(userController));
 
 
 //==Protected routes==

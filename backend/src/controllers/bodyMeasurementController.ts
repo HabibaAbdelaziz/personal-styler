@@ -39,41 +39,41 @@ export class BodyMeasurementController {
         }
     }
 
-    // async getMeasurementHistory(req: Request, res: Response): Promise<any> {
-    //     try {
-    //         const history = await this.bodyMeasurementService.getMeasurementHistory(
-    //             req.params.stylePreferenceId
-    //         );
+    async getMeasurementHistory(req: Request, res: Response): Promise<any> {
+        try {
+            const history = await this.bodyMeasurementService.getMeasurementHistory(
+                req.params.stylePreferenceId
+            );
 
-    //         return res.status(200).json({
-    //             success: true,
-    //             data: history
-    //         });
-    //     } catch (error: any){
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: 'Failed to get measurement history',
-    //             error: error.message
-    //         });
-    //     }
-    // }
+            return res.status(200).json({
+                success: true,
+                data: history
+            });
+        } catch (error: any){
+            return res.status(400).json({
+                success: false,
+                message: 'Failed to get measurement history',
+                error: error.message
+            });
+        }
+    }
 
-    // async getLatestMeasurement(req: Request, res: Response): Promise<any>{
-    //     try {
-    //         const measurement = await this.bodyMeasurementService.getLatestMeasurement(
-    //             req.params.stylePreferenceId
-    //         );
+    async getLatestMeasurement(req: Request, res: Response): Promise<any>{
+        try {
+            const measurement = await this.bodyMeasurementService.getLatestMeasurement(
+                req.params.stylePreferenceId
+            );
 
-    //         return res.status(200).json({
-    //             success: true,
-    //             data: measurement
-    //         });
-    //     } catch (error: any){
-    //         return res.status(400).json({
-    //             success: false,
-    //             message: 'Failed to get latest measurements.',
-    //             error: error.message
-    //         });
-    //     }
-    // }
+            return res.status(200).json({
+                success: true,
+                data: measurement
+            });
+        } catch (error: any){
+            return res.status(400).json({
+                success: false,
+                message: 'Failed to get latest measurements.',
+                error: error.message
+            });
+        }
+    }
 }

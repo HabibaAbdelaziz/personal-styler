@@ -6,13 +6,14 @@ import userRoutes from './routes/userRoutes';
 import cors from 'cors';
 import stylePreferenceRoutes from './routes/stylePreferenceRoutes';
 import bodyMeasurementRoutes from './routes/bodyMeasurementRoutes';
+import path from 'path';
 
 // Load environment variables from .env file
 // dotenv -> helps us manage env vars (like secret keys)
 dotenv.config();
 
 // create express applic
-const app: Express = express();
+const app = express();
 
 // Define port our server will run on
 // If someone provides a port, we use PORT. Otherwise, use 3001
@@ -23,17 +24,21 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 // Telling express to understand JSON data
 app.use(express.json());
+// Serve frontend build folder
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 
-// ===Routes===
+
+
+// === API Routes (musr be before catch-all)===
 app.use('/api/users', userRoutes);
 app.use('/api/style-preferences', stylePreferenceRoutes);
 app.use('/api/measurements', bodyMeasurementRoutes);
 
-// // Sample test route
-// app.get('/test', (req: Request, res: Response) => {
-//     res.json({ message: 'Hello from the Personal Styler API!'});
-// });
+// Catch-all route for React app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 // Connect to database then start server
 connectDB().then(() => {

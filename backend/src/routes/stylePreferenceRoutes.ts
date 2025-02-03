@@ -5,7 +5,7 @@ import { auth } from '../middleware/auth';
 const router = express.Router();
 const stylePreferencesController = new StylePreferenceController();
 
-// all routes wull use auth middleware since they're user-specific
+// all routes will use auth middleware since they're user-specific
 
 // POST /api/style-preferences - create new style preferences
 router.post(
@@ -14,7 +14,7 @@ router.post(
     stylePreferencesController.createPreference.bind(stylePreferencesController)
 );
 
-// PUT /ai/style-preferences - Update style preferences
+// PUT /api/style-preferences - Update style preferences
 router.put(
     '/',
     auth,
