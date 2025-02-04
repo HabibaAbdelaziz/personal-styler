@@ -7,10 +7,7 @@ const userSchema = new Schema<IUser>({
     password: { type: String, required: true},
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
-    stylePreferenceId: {
-        type: Schema.Types.ObjectId,
-        ref: 'StylePreference',
-        default: null, // Set to null initially or generate a default if needed
+    stylePreferenceId: {type: String, default: null // Set to null initially or generate a default if needed
     }
 }, {
     timestamps: true // automatically adds createdAt and updatedAt fields
