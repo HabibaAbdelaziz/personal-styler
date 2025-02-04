@@ -50,24 +50,24 @@ const bodyMeasurementSchema = new Schema<IBodyMeasurement>({
 });
 
 
-// // methods to calculate body shape based on measurements
-// bodyMeasurementSchema.methods.calculateBodyShape = function(): string {
-//     const bust = this.bust;
-//     const waist = this.waist;
-//     const hips = this.hips;
+// methods to calculate body shape based on measurements
+bodyMeasurementSchema.methods.calculateBodyShape = function(): string {
+    const bust = this.bust;
+    const waist = this.waist;
+    const hips = this.hips;
 
-//     // basic body shape calculation logic
-//     if (Math.abs(bust - hips) <= 2 && (bust - waist) >= 7) {
-//         return 'hourglass';
-//     } else if (bust > hips + 2 && (bust - waist) >= 7) {
-//         return 'inverted-triangle';
-//     } else if (hips > bust + 2 && (hips - waist) >= 7) {
-//         return 'pear';
-//     } else if (Math.abs(bust - hips) <= 2 && (bust - waist) < 7) {
-//         return 'rectangle';
-//     } else {
-//         return 'apple';
-//     }
-// };
+    // basic body shape calculation logic
+    if (Math.abs(bust - hips) <= 2 && (bust - waist) >= 7) {
+        return 'hourglass';
+    } else if (bust > hips + 2 && (bust - waist) >= 7) {
+        return 'inverted-triangle';
+    } else if (hips > bust + 2 && (hips - waist) >= 7) {
+        return 'pear';
+    } else if (Math.abs(bust - hips) <= 2 && (bust - waist) < 7) {
+        return 'rectangle';
+    } else {
+        return 'apple';
+    }
+};
 
 export const BodyMeasurement = mongoose.model<IBodyMeasurement>('BodyMeasurement', bodyMeasurementSchema);
