@@ -3,7 +3,7 @@ import { UserService } from '../services/userService'; // handles creating a nde
 import { StylePreference } from '../models/StylePreference';
 import { User } from '../models/User';
 import { StylePreferenceService } from '../services/stylePreferenceService';
-
+import { v4 as uuidv4 } from 'uuid'; // Import UUID generator
 
 export class UserController {
     private userService: UserService;
@@ -35,7 +35,7 @@ export class UserController {
                 password,
                 firstName,
                 lastName,
-                stylePreferenceId: null,  // Set default to null or create an initial one
+                stylePreferenceId: uuidv4(),  // Set default to null or create an initial one
             });
             
             // 201 means "Created" so user was created successfully (request was successful)
@@ -122,16 +122,19 @@ export class UserController {
 
                 console.log('Created default style preference:', defaultStyle)
                 
-                //update user's stylePreferenceId
-                req.user.stylePreferenceId = defaultStyle.id;
+                //Generate a random UUID as the stylePreferenceId
+                req.user.stylePreferenceId = uuidv4();
                 await req.user.save(); //save the user with their new style preference
+
+                console.log('Random stylePreferenceId assigned successfully: ', req.user.stylePreferenceId);
 
                 return res.status(200).json({
                     success: true,
                     data: {
                         user: req.user,
-                        StylePreferenceId: defaultStyle.id,
-                    }
+                        StylePreferenceId: req.user.stylePreferenceId,
+                    },
+                    message: 'Random stylePreferenceId assigned successfully'
                 });
             }
 
