@@ -12,41 +12,41 @@ const bodyMeasurementSchema = new Schema<IBodyMeasurement>({
         required: true,
         min: MEASUREMENT_RANGES.height.min,
         max: MEASUREMENT_RANGES.height.max
-    }
-    // weight: {
-    //     type: Number, 
-    //     required: true,
-    //     min: MEASUREMENT_RANGES.weight.min,
-    //     max: MEASUREMENT_RANGES.weight.max
-    // },
-    // age: {
-    //     type: Number, 
-    //     required: true,
-    //     min: MEASUREMENT_RANGES.age.min,
-    //     max: MEASUREMENT_RANGES.age.max
-    // },
-    // bust: {
-    //     type: Number, 
-    //     required: true,
-    //     min: MEASUREMENT_RANGES.bust.min,
-    //     max: MEASUREMENT_RANGES.bust.max
-    // },
-    // waist: {
-    //     type: Number, 
-    //     required: true,
-    //     min: MEASUREMENT_RANGES.waist.min,
-    //     max: MEASUREMENT_RANGES.waist.max
-    // },
-    // hips: {
-    //     type: Number, 
-    //     required: true,
-    //     min: MEASUREMENT_RANGES.hips.min,
-    //     max: MEASUREMENT_RANGES.hips.max
-    // },
-    // measuredAt: {
-    //     type: Date,
-    //     default: Date.now
-    // }   
+    },
+    weight: {
+        type: Number, 
+        required: true,
+        min: MEASUREMENT_RANGES.weight.min,
+        max: MEASUREMENT_RANGES.weight.max
+    },
+    age: {
+        type: Number, 
+        required: true,
+        min: MEASUREMENT_RANGES.age.min,
+        max: MEASUREMENT_RANGES.age.max
+    },
+    bust: {
+        type: Number, 
+        required: true,
+        min: MEASUREMENT_RANGES.bust.min,
+        max: MEASUREMENT_RANGES.bust.max
+    },
+    waist: {
+        type: Number, 
+        required: true,
+        min: MEASUREMENT_RANGES.waist.min,
+        max: MEASUREMENT_RANGES.waist.max
+    },
+    hips: {
+        type: Number, 
+        required: true,
+        min: MEASUREMENT_RANGES.hips.min,
+        max: MEASUREMENT_RANGES.hips.max
+    },
+    measuredAt: {
+        type: Date,
+        default: Date.now
+    }   
 });
 
 

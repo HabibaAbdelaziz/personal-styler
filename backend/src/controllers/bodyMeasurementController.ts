@@ -15,11 +15,11 @@ export class BodyMeasurementController {
             const measurement = await this.bodyMeasurementService.addMeasurement({
                 stylePreferenceId: req.body.stylePreferenceId,
                 height: req.body.height
-                // ,weight: req.body.weight,
-                // bust: req.body.bust,
-                // waist: req.body.waist,
-                // hips: req.body.hips,
-                // age: req.body.age
+                ,weight: req.body.weight,
+                bust: req.body.bust,
+                waist: req.body.waist,
+                hips: req.body.hips,
+                age: req.body.age
             });
 
             console.log('Measurement created', measurement);
