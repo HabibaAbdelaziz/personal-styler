@@ -74,6 +74,17 @@ const Register: React.FC = () => {
                         />
                     </label>
                 </div>
+                <div>
+                    <label className="block mb-2">Password:
+                        <input 
+                            type="password"
+                            value={userData.password}
+                            onChange={e => setUserData({...userData, password: e.target.value})}
+                            className="w-full p-2 border rounded"
+                            required
+                        /> 
+                    </label>
+                </div>
                 <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
                     Register
                 </button>
