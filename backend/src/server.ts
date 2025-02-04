@@ -16,8 +16,8 @@ dotenv.config();
 const app = express();
 
 // Define port our server will run on
-// If someone provides a port, we use PORT. Otherwise, use 3001
-const port = process.env.PORT || 3001;
+// If someone provides a port, we use PORT. Otherwise, use 3002
+const port = process.env.PORT || 3002;
 
 
 // ===Middleware===
