@@ -57,8 +57,9 @@ const MeasurementForm: React.FC = () => {
 
         try {
             console.log('Submitting measurements:', measurements);
-            console.log('StylePreferenceId: ', stylePreferenceId);
-            console.log('Token: ', token);
+            console.log("Retrieved stylePreferenceId:", localStorage.getItem("stylePreferenceId"));
+            console.log("Retrieved token:", localStorage.getItem("token"));
+
 
             const response = await fetch('http://localhost:3001/api/measurements', {
                 method: 'POST',

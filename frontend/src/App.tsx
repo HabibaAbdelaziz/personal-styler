@@ -4,6 +4,7 @@ import HeightForm from './components/HeightForm';
 import Login from './components/Login';
 import Register from './components/Register';
 import PrivateRoute from './components/PrivateRoute';
+import MeasurementForm from './components/MeasurementForm';
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,14 @@ const App: React.FC = () => {
           element={
             <PrivateRoute>
               <HeightForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/MeasurementForm"
+          element={
+            <PrivateRoute>
+              <MeasurementForm />
             </PrivateRoute>
           }
         />

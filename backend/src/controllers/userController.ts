@@ -65,26 +65,35 @@ export class UserController {
     // User Logging in
     async login(req: Request, res: Response): Promise<any> {
         try {
+            console.log('Login request received:', { email: req.body.email });
             const {email, password} = req.body;
 
             // Validat input
             if(!email || !password) {
+                console.log('Missing credentials in login request');
                 return res.status(400).json({
                     success: false,
                     message: 'Email and/or password are required. Please check if they are entered correctly.'
                 });
             }
-            const {user, token} = await this.userService.loginUser(email, password);
+
+            console.log('Attempting to login user...');
+            const {user, token, stylePreferenceId} = await this.userService.loginUser(email, password);
             
             // Log user and stylePreferenceId for debugging
-            console.log('User logged in:', user);
-            console.log('User Style Preference ID:', user.stylePreferenceId);
+            console.log('Login successful');
+            console.log('User details:', {
+                id: user.id,
+                email: user.email,
+                stylePreferenceId: stylePreferenceId
+            });
             
             return res.status(200).json({
                 success: true,
                 message: 'Login Successful',
                 data: {
                     token,
+                    stylePreferenceId,
                     user: {
                         id: user.id,
                         email: user.email,

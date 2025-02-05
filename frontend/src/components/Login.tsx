@@ -25,19 +25,27 @@ const Login: React.FC = () => {
             });
 
             const data = await response.json();
-            console.log("Response received: ", data) //log response
+            console.log("Full Response received: ", data) //log response
 
             if(response.ok){
-                console.log("Login successful! Redirecting....")
+                console.log("Login successful! Token:", data.data.token);
+                console.log("StylePreferenceId:", data.data.stylePreferenceId);
+                
                 localStorage.setItem('token', data.data.token);
-                localStorage.setItem('stylePreferenceId', data.data.stylePreferenceId)
-                navigate('/HeightForm'); //redirect to HeightForm after successful Login
+                localStorage.setItem('stylePreferenceId', data.data.stylePreferenceId);
+                
+                // Verify storage
+                console.log("Stored token:", localStorage.getItem('token'));
+                console.log("Stored stylePreferenceId:", localStorage.getItem('stylePreferenceId'));
+                
+                navigate('/MeasurementForm'); //redirect to MeasurementForm after successful Login
+                //navigate('/HeightForm'); //redirect to HeightForm after successful Login
             } else {
-                console.error("Error:", data.message);
+                console.error("Logiin Failed: ", data.message);
                 setError(data.message || 'Invalid email or password')
             }
         } catch (error) {
-            console.error("Network error:", error);
+            console.error("Login Failed. Network error:", error);
             setError('Network error. Please try again.');
         }
     };

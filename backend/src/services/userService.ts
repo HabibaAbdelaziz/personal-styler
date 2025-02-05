@@ -2,6 +2,15 @@ import { IUser } from '../types/user';
 import { User } from '../models/User';
 import bcrypt from  'bcrypt';
 import jwt from 'jsonwebtoken';
+import { StylePreference } from '../models/StylePreference';
+
+
+interface LoginResponse {
+    user: IUser;
+    token: string;
+    stylePreferenceId: string;
+}
+
 
 export class UserService {
     // func to create new user
@@ -29,29 +38,50 @@ export class UserService {
     }
 
     // Function to login user
-    async loginUser(email: string, password: string): Promise<{user: IUser, token: string}>{
+    async loginUser(email: string, password: string): Promise<LoginResponse>{
         try{
+            console.log('Attempting login for email', email);
+
             //find user by email
             const user = await User.findOne({email});
+            console.log('Found user:', user? 'Yes': 'No');
+
             if(!user){
+                console.log('User not found for email: ', email)
                 throw new Error('User not found');
             }
 
             //chec password
+            console.log('Checking password...')
             const isMatch = await bcrypt.compare(password, user.password);
+            console.log('Password match:', isMatch? 'Yes': 'No')
+            
             if(!isMatch){
+                console.log('Password mismatch for user:', email);
                 throw new Error('Invalid password');
             }
+            console.log('User authenticated successfully');
 
+            //find user's style pref id
+            const stylePreference = await StylePreference.findOne({ userId: user._id})
+            console.log('stylePreference:', stylePreference);
+            console.log('User stylePreferenceId:', user.stylePreferenceId);
+            
             // use JWT tokens (json web token) to securely transmit info as a json object
             const token = jwt.sign(
                 {userId: user._id},
                 process.env.JWT_SECRET || 'your-secret-key',
                 {expiresIn: '24h'}
             );
+            console.log('JWT token generated')
 
-            return {user, token};
+            return {
+                user,
+                token,
+                stylePreferenceId: user.stylePreferenceId || ''
+            };
         } catch (error: any) {
+            console.error('Login error:', error.message);
             throw new Error(error.message);
         }
     }
