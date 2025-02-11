@@ -123,4 +123,7 @@ Below are some screenshots of the application:
 Link to ER Diagram:
 ![ER Diagram](https://github.com/HabibaAbdelaziz/personal-styler/blob/8a4f7fc11d1b28263c7a67da069f4b9450efe3f5/erDiagram-asOf-2025-01-17.mmd "ER Diagram")
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/HabibaAbdelaziz/personal-styler/blob/578e014136c172a411818d3d0274cd6d1968bf80/LICENSE "LICENSE") file for details.
 
