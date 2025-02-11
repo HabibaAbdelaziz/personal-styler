@@ -1,4 +1,4 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, {Schema, Model} from "mongoose";
 import { IBodyMeasurement, MEASUREMENT_RANGES } from "../types/bodyMeasurement";
 
 const bodyMeasurementSchema = new Schema<IBodyMeasurement>({
@@ -70,4 +70,4 @@ bodyMeasurementSchema.methods.calculateBodyShape = function(): string {
     }
 };
 
-export const BodyMeasurement = mongoose.model<IBodyMeasurement>('BodyMeasurement', bodyMeasurementSchema);
+export const BodyMeasurement: Model<IBodyMeasurement> = mongoose.model<IBodyMeasurement>('BodyMeasurement', bodyMeasurementSchema);

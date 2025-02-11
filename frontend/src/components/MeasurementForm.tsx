@@ -17,6 +17,7 @@ const MeasurementForm: React.FC = () => {
         age: ''
     });
     const [message, setMessage] = useState<string>('');
+    const [bodyShape, setBodyShape] = useState<string | null>('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMeasurements({
@@ -76,6 +77,7 @@ const MeasurementForm: React.FC = () => {
             if (response.ok) {
                 console.log('Measurements saved successfully!');
                 setMessage('Measurements saved successfully!');
+                setBodyShape(data.data.bodyShape); // Store body shape in state
             } else {
                 console.log('Failed to save measurements');
                 throw new Error(data.message || 'Failed to save measurements');
@@ -89,6 +91,7 @@ const MeasurementForm: React.FC = () => {
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-6">Enter Your Measurements</h2>
+            <h3 className="text-xl mb-2">Please use SI units (i.e cm, kg).</h3>
             {message && (
                 <div className={`mb-4 p-2 rounded ${message.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                     {message}
@@ -98,7 +101,7 @@ const MeasurementForm: React.FC = () => {
                 {['height', 'weight', 'bust', 'waist', 'hips', 'age'].map((field) => (
                     <div key={field}>
                         <label className="block mb-2 capitalize">
-                            {field} (cm):
+                            {field}:
                             <input
                                 type="number"
                                 name={field}
@@ -117,6 +120,13 @@ const MeasurementForm: React.FC = () => {
                     Save Measurements
                 </button>
             </form>
+            {/* display body dhape */}
+            {bodyShape && (
+                <div className='mt-6 p-4 bg-blue-100 border-1-4 border-blue-500 rounded'>
+                    <p className="text-lg font-semibold text-blue-700">Your Body Shape Is:</p>
+                    <p className="text-2xl font-bold text-blue-800">{bodyShape}</p>
+                </div>
+            )}
         </div>
     );
 };
