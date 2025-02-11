@@ -91,6 +91,7 @@ const MeasurementForm: React.FC = () => {
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-6">Enter Your Measurements</h2>
+            <h3 className="text-xl mb-2">Please use SI units (i.e cm, kg).</h3>
             {message && (
                 <div className={`mb-4 p-2 rounded ${message.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                     {message}
@@ -100,7 +101,7 @@ const MeasurementForm: React.FC = () => {
                 {['height', 'weight', 'bust', 'waist', 'hips', 'age'].map((field) => (
                     <div key={field}>
                         <label className="block mb-2 capitalize">
-                            {field} (cm):
+                            {field}:
                             <input
                                 type="number"
                                 name={field}
