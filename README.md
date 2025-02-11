@@ -107,7 +107,7 @@ Feel free to submit issues and enhancement requests.
 Below are some screenshots of the application:
 
 ### Homepage
-![homepage screenshot]([(https://github.com/HabibaAbdelaziz/personal-styler/blob/75ca6354d7d6a32e45a217094ce0f084be3f2a88/home_page_example.png)] "Homepage")
+![homepage screenshot](https://github.com/HabibaAbdelaziz/personal-styler/blob/75ca6354d7d6a32e45a217094ce0f084be3f2a88/home_page_example.png "Homepage")
 
 ### Registration Page
 
