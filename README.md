@@ -119,5 +119,6 @@ Below are some screenshots of the application:
 ![Body Measurement Form](https://github.com/HabibaAbdelaziz/personal-styler/blob/e01d02b1506c4d8ba8b1e6ed6de4610e521d8f49/measurement_form_example_1.png "Body Measurement Form")
 
 ### ER Diagram
+![ER Diagram](https://github.com/HabibaAbdelaziz/personal-styler/blob/8a4f7fc11d1b28263c7a67da069f4b9450efe3f5/erDiagram-asOf-2025-01-17.mmd "ER Diagram")
 
 ### UML Diagram
