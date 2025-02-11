@@ -1,4 +1,5 @@
-export interface IBodyMeasurement {
+import { Document } from "mongoose";
+export interface IBodyMeasurement extends Document{
     id?: string;
     stylePreferenceId: string;
     height: number;
@@ -8,6 +9,7 @@ export interface IBodyMeasurement {
     waist: number;
     hips: number;
     measuredAt?: Date;
+    calculateBodyShape(): string;
 }
 
 //for validation aand type checking

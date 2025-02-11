@@ -1,14 +1,26 @@
 import { IBodyMeasurement } from "../types/bodyMeasurement";
 import { BodyMeasurement } from "../models/BodyMeasurement";
 
+//define an interface for the return type
+interface MeasurementWithShape{
+    measurement: IBodyMeasurement;
+    bodyShape: string;
+}
 export class BodyMeasurementService {
-    async addMeasurement(measureData: IBodyMeasurement): Promise<IBodyMeasurement> {
+    async addMeasurement(measureData: IBodyMeasurement): Promise<MeasurementWithShape> {
         try {
             console.log('Service: Creating measurement with data:', measureData);
             const measurement = new BodyMeasurement(measureData);
             const savedMeasurement = await measurement.save();
             console.log('Service: Measurement saved:', savedMeasurement);
-            return savedMeasurement;
+            
+            // call method to calc body shape
+            const bodyShape = savedMeasurement.calculateBodyShape();
+
+            return {
+                measurement: savedMeasurement,
+                bodyShape: bodyShape
+            }
         } catch (error: any) {
             console.error('Service: Error creating measurement:', error);
             throw new Error(error.message);

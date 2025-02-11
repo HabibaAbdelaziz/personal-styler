@@ -12,22 +12,38 @@ export class BodyMeasurementController {
         try {
             console.log('Creating measurement with data:', req.body);
 
-            const measurement = await this.bodyMeasurementService.addMeasurement({
-                stylePreferenceId: req.body.stylePreferenceId,
-                height: req.body.height
-                ,weight: req.body.weight,
-                bust: req.body.bust,
-                waist: req.body.waist,
-                hips: req.body.hips,
-                age: req.body.age
-            });
+            const result = await this.bodyMeasurementService.addMeasurement(req.body);
 
-            console.log('Measurement created', measurement);
+            // const measurement = await this.bodyMeasurementService.addMeasurement({
+            //     stylePreferenceId: req.body.stylePreferenceId,
+            //     height: req.body.height,
+            //     weight: req.body.weight,
+            //     bust: req.body.bust,
+            //     waist: req.body.waist,
+            //     hips: req.body.hips,
+            //     age: req.body.age
+            //     //Should I add bodyShape here?
+            // });
+
+            console.log('Saved measurements:', {
+                height: result.measurement.height,
+                weight: result.measurement.weight,
+                bust: result.measurement.bust,
+                waist: result.measurement.waist,
+                hips: result.measurement.hips,
+                age: result.measurement.age
+            });
+            console.log('Calculated body shape: ',result.bodyShape )
+
+            // console.log('Measurement created', measurement);
 
             res.status(201).json({
                 success: true,
-                message: 'Measurements are successfully',
-                data: measurement
+                message: 'Measurements added successfully',
+                data: {
+                    measurements: result.measurement,
+                    bodyShape: result.bodyShape
+                }
             });
         } catch (error: any) {
             console.error('Error creating measurement:', error);

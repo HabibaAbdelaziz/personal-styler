@@ -17,6 +17,7 @@ const MeasurementForm: React.FC = () => {
         age: ''
     });
     const [message, setMessage] = useState<string>('');
+    const [bodyShape, setBodyShape] = useState<string | null>('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMeasurements({
@@ -76,6 +77,7 @@ const MeasurementForm: React.FC = () => {
             if (response.ok) {
                 console.log('Measurements saved successfully!');
                 setMessage('Measurements saved successfully!');
+                setBodyShape(data.data.bodyShape); // Store body shape in state
             } else {
                 console.log('Failed to save measurements');
                 throw new Error(data.message || 'Failed to save measurements');
@@ -117,6 +119,13 @@ const MeasurementForm: React.FC = () => {
                     Save Measurements
                 </button>
             </form>
+            {/* display body dhape */}
+            {bodyShape && (
+                <div className='mt-6 p-4 bg-blue-100 border-1-4 border-blue-500 rounded'>
+                    <p className="text-lg font-semibold text-blue-700">Your Body Shape Is:</p>
+                    <p className="text-2xl font-bold text-blue-800">{bodyShape}</p>
+                </div>
+            )}
         </div>
     );
 };
