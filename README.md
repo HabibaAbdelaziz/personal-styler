@@ -78,7 +78,7 @@ npm start
 npm install tailwindcss @tailwindcss/cli
 ```
 **2. Generate Tailwind output Run this command to build your Tailwind CSS file:**
-``bash
+```bash
 npx @tailwindcss/cli -i ./src/App.css -o ./src/output.css --watch
 ```
 
