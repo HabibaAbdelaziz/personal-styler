@@ -120,6 +120,7 @@ Below are some screenshots of the application:
 
 ### ER Diagram
 ![ER Diagram](https://github.com/HabibaAbdelaziz/personal-styler/blob/a22b7c5148c4c100ce9a60a289962832d8a3f373/er_diagram_photo.png "ER Diagram")
+Link to ER Diagram:
 ![ER Diagram](https://github.com/HabibaAbdelaziz/personal-styler/blob/8a4f7fc11d1b28263c7a67da069f4b9450efe3f5/erDiagram-asOf-2025-01-17.mmd "ER Diagram")
 
-### UML Diagram
+
