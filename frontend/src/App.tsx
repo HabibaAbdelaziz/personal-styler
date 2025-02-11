@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HeightForm from './components/HeightForm';
+// import HeightForm from './components/HeightForm';
 import Login from './components/Login';
 import Register from './components/Register';
 import PrivateRoute from './components/PrivateRoute';
 import MeasurementForm from './components/MeasurementForm';
+import LandingPage from './components/LandingPage'
 
 const App: React.FC = () => {
   return (
@@ -29,16 +30,9 @@ const App: React.FC = () => {
     <BrowserRouter> 
       
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/HeightForm"
-          element={
-            <PrivateRoute>
-              <HeightForm />
-            </PrivateRoute>
-          }
-        />
         <Route
           path="/MeasurementForm"
           element={
