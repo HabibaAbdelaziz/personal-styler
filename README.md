@@ -113,8 +113,10 @@ Below are some screenshots of the application:
 ![Registration Page screenshot](https://github.com/HabibaAbdelaziz/personal-styler/blob/d0de774a953e443af2d6a83b659e9560da5e15ac/register_example_1.png "Registration Page")
 
 ### Login Page
+![Login Page screenshot](https://github.com/HabibaAbdelaziz/personal-styler/blob/e01d02b1506c4d8ba8b1e6ed6de4610e521d8f49/login_example_1.png "Login Page")
 
 ### Measurement Form Page
+![Body Measurement Form](https://github.com/HabibaAbdelaziz/personal-styler/blob/e01d02b1506c4d8ba8b1e6ed6de4610e521d8f49/measurement_form_example_1.png "Body Measurement Form")
 
 ### ER Diagram
 
