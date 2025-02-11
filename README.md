@@ -32,12 +32,58 @@ A full-stack web application that helps users determine their body type based on
 
 ### Installation
 
-1. Clone the repository
+**1. Clone the repository**
 ```bash
 git clone https://github.com/HabibaAbdelaziz/personal-styler.git
+```
 
-2. Install backend dependencies
+**2. Install backend dependencies**
 In the project folder, navigate to the backend directory:
 ```bash
 cd backend
 npm install
+```
+
+**3. Install frontend dependencies**
+Navigate to the frontend directory:
+```bash
+cd frontend
+npm install
+```
+
+**4. Setup environment variables**
+Create a .env file in the backend directory and configure the following variables:
+```env
+PORT=3001
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+**5. Start the backend server**
+In the backend directory, run:
+```bash
+npm run dev
+```
+
+**6. Start the frontend application**
+In the frontend directory, run:
+```bash
+npm start
+```
+
+### Frontend Setup with Tailwind CSS Ver 4
+
+**1. Install TailwindCSS and CLI ** Run the following command in the frontend terminal:
+``` bash
+npm install tailwindcss @tailwindcss/cli
+```
+
+**2. Generate Tailwind output ** Run this command to build your Tailwind CSS file: 
+``bash
+npx @tailwindcss/cli -i ./src/App.css -o ./src/output.css --watch
+```
+
+**3. Run the frontend ** Now, start the frontend:
+```bash
+npm start
+```
