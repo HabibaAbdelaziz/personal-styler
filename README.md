@@ -89,10 +89,10 @@ npm start
 
 ## API Endpoints
 
-* POST /api/users/register: Register new user.
-* POST /api/users/login: User login.
-* POST /api/measurements: Save user measurements.
-* GET /api/measurements: Get user measurements.
+* **POST /api/users/register:** Register new user.
+* **POST /api/users/login:** User login.
+* **POST /api/measurements:** Save user measurements.
+* **GET /api/measurements:** Get user measurements.
 
 ## Future Enhancements
 * Style recommendations based on body type.
