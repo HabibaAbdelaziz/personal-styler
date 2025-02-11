@@ -73,17 +73,16 @@ npm start
 
 ### Frontend Setup with Tailwind CSS Ver 4
 
-**1. Install TailwindCSS and CLI ** Run the following command in the frontend terminal:
+**1. Install TailwindCSS and CLI Run the following command in the frontend terminal:**
 ``` bash
 npm install tailwindcss @tailwindcss/cli
 ```
-
-**2. Generate Tailwind output ** Run this command to build your Tailwind CSS file: 
+**2. Generate Tailwind output Run this command to build your Tailwind CSS file:**
 ``bash
 npx @tailwindcss/cli -i ./src/App.css -o ./src/output.css --watch
 ```
 
-**3. Run the frontend ** Now, start the frontend:
+**3. Run the frontend Now, start the frontend:**
 ```bash
 npm start
 ```
