@@ -95,6 +95,7 @@ npm start
 * **GET /api/measurements:** Get user measurements.
 
 ## Future Enhancements
+* Use automated testing.
 * Style recommendations based on body type.
 * Wardrobe management system.
 * Personal style quiz.
