@@ -95,6 +95,7 @@ npm start
 * **GET /api/measurements:** Get user measurements.
 
 ## Future Enhancements
+* **Migrate to a Framework Like Next.js or Vite.**
 * Use automated testing.
 * Style recommendations based on body type.
 * Wardrobe management system.
