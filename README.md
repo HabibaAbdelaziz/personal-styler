@@ -2,6 +2,12 @@
 
 A full-stack web application that helps users determine their body type based on measurements. Built with React, Node.js, Express, and MongoDB.
 
+## Demo Video
+https://github.com/user-attachments/assets/5a0876f4-b2cc-4f8b-acbc-722e8f73f221
+
+
+
+
 ## Features
 
 - **User Authentication**: Secure login and registration system using JWT
